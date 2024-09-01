@@ -1,0 +1,1 @@
+Bot do finado Twitter, a [PoptimeDEV](https://github.com/JoaquimCassano/PoptimeDEV) foi um bot que usava IA para noticiar as fofocas da bolha dev do twitter. Essa V2 visa migrar o bot para o Bluesky, adicionar novos recursos e melhorar o código.
