@@ -37,10 +37,7 @@ def RetweetsFlow():
 
     time.sleep(180)
 
-
-if __name__ == '__main__':
-  t1 = threading.Thread(target=MainFlow)
-  t2 = threading.Thread(target=RetweetsFlow)
-  t1.start()
-  t2.start()
-  app.run()
+t1 = threading.Thread(target=MainFlow)
+t2 = threading.Thread(target=RetweetsFlow)
+t1.start()
+t2.start()
