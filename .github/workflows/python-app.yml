@@ -25,6 +25,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Start the bot
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        BSKY_USER: "poptimedev.bsky.social"
+        BSKY_PASS: ${{ secrets.BSKY_PASS }}
       run: |
         python src/main.py
     
