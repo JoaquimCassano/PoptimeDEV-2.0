@@ -1,6 +1,15 @@
-from ai import GeneratePosts
-from bsky import GetTimeline, QuotePost, GetMentions, RePost
+from .ai import GeneratePosts
+from .bsky import GetTimeline, QuotePost, GetMentions, RePost
 import threading, time, rich
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+  return 'Hello World!'
+
+
 
 def MainFlow():
   while True:
@@ -30,3 +39,4 @@ if __name__ == '__main__':
   t2 = threading.Thread(target=RetweetsFlow)
   t1.start()
   t2.start()
+  app.run()

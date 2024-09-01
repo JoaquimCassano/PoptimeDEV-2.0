@@ -3,3 +3,4 @@ pydantic
 atproto
 rich
 python-dotenv
+flask

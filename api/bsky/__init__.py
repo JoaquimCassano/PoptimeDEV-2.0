@@ -1,6 +1,6 @@
 import dotenv, os
 from atproto import Client, models
-from ai import Post
+from ..ai import Post
 import rich
 
 dotenv.load_dotenv()
