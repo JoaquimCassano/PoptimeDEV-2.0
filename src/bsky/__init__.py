@@ -1,12 +1,11 @@
 import dotenv, os
 from atproto import Client, models
 from ai import Post
-
+from datetime import datetime
 
 dotenv.load_dotenv()
 user = os.getenv('BSKY_USER') ; passwd = os.getenv('BSKY_PASS')
-print(user, passwd)
-
+repostedCIDs = []
 
 client = Client(base_url='https://bsky.social')
 client.login(user, passwd)
@@ -39,3 +38,22 @@ def QuotePost(post:Post):
   )
   return post
 
+def GetMentions() -> list[models.AppBskyNotificationListNotifications.Notification]:
+  mentions = []
+  Unreadnotifications = client.app.bsky.notification.get_unread_count()
+  if Unreadnotifications.count > 0:
+    allNotifications = client.app.bsky.notification.list_notifications(params={'limit':Unreadnotifications.count})
+    for notification in allNotifications.notifications:
+      if notification.reason == 'mention' and notification.is_read == False:
+        mentions.append(notification)
+
+    client.app.bsky.notification.update_seen(data={'seen_at':client.get_current_time_iso()})
+    return mentions
+  return []
+
+def RePost(cid:str, uri:str):
+  if cid in repostedCIDs:
+    return
+  repostedCIDs.append(cid)
+  client.repost(uri=uri, cid=cid)
+  return
