@@ -1,7 +1,7 @@
 import dotenv, os
 from atproto import Client, models
 from ai import Post
-from datetime import datetime
+import rich
 
 dotenv.load_dotenv()
 user = os.getenv('BSKY_USER') ; passwd = os.getenv('BSKY_PASS')
@@ -9,7 +9,9 @@ repostedCIDs = []
 
 client = Client(base_url='https://bsky.social')
 client.login(user, passwd)
-
+rich.print(f'[green]Logged in![/green]')
+rich.print(f'Logged as [blue]{user}[/blue]')
+print('\n \n')
 class recreatedModel:
     def __init__(self, cid:str, uri:str) -> None:
       self.cid = cid

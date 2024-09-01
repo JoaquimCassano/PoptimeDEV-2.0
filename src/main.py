@@ -11,7 +11,7 @@ def MainFlow():
       print('Posted')
       print('\n \n \n \n')
 
-    time.sleep(1200)
+    time.sleep(3000)
 
 def RetweetsFlow():
   while True:
@@ -22,11 +22,11 @@ def RetweetsFlow():
       print('Reposted')
       print('\n \n \n \n')
 
-    time.sleep(1200)
+    time.sleep(180)
 
 
 if __name__ == '__main__':
-  #t1 = threading.Thread(target=MainFlow)
+  t1 = threading.Thread(target=MainFlow)
   t2 = threading.Thread(target=RetweetsFlow)
-  #t1.start()
+  t1.start()
   t2.start()
