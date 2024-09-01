@@ -12,7 +12,9 @@ def hello():
 
 
 def MainFlow():
+  print('Started mainflow.')
   while True:
+    print('Running mainflow.')
     posts = GeneratePosts(GetTimeline(limit=30))
     for post in posts['posts']:
       rich.print(f'[red bold]NEW POST[/red bold]: {post}')
@@ -23,7 +25,9 @@ def MainFlow():
     time.sleep(3000)
 
 def RetweetsFlow():
+  print('Started retweetsflow.')
   while True:
+    print('Running retweetsflow.')
     mentions = GetMentions()
     for mention in mentions:
       rich.print(f'[blue bold]NEW MENTION[/blue bold]: {mention.author.display_name}')
